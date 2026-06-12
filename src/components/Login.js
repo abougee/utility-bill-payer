@@ -26,14 +26,14 @@ function Login() {
         <h2>Utility Bill Payment</h2>
         <form onSubmit={handleSubmit}>
           <div style={styles.inputGroup}>
-            <label>Email</label>
+            <label>Username</label>
             <input
-              type="email"
+              type="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
               style={styles.input}
-              placeholder="user@example.com"
+              placeholder="Your Username"
             />
           </div>
           <div style={styles.inputGroup}>
@@ -44,7 +44,7 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               required
               style={styles.input}
-              placeholder="password123"
+              placeholder="Your Password"
             />
           </div>
           {error && <div style={styles.error}>{error}</div>}

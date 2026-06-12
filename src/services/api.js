@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:3000";
+const API_BASE_URL = "http://localhost:3000/MyNestJsApp";
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -19,7 +19,7 @@ apiClient.interceptors.request.use((config) => {
 
 export const api = {
   login: (username, password) =>
-    apiClient.post("/auth/login", { username, password }),
+    apiClient.post("/login", { username, password }),
   getBills: () => apiClient.get("/bills"),
   getAllBills: () => apiClient.get("/bills/all"),
   payBill: (billId) => apiClient.post(`/bills/pay/${billId}`),
