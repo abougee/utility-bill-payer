@@ -26,7 +26,7 @@ function App() {
       if (response.data.access_token) {
         localStorage.setItem("token", response.data.access_token);
         setToken(response.data.access_token);
-        setUser(response.data.user);
+        setUser(response.data.usersession);
         return { success: true };
       }
       return { success: false, error: "Login failed" };
