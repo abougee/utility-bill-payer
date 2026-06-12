@@ -1,9 +1,11 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:3000/MyNestJsApp";
+const API_BASE_URL = "http://localhost:3000";
+const API_CONTROLLER_URI = "/MyNestJsApp";
+const API_TARGET_URI = API_BASE_URL + API_CONTROLLER_URI;
 
 const apiClient = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: API_TARGET_URI,
   headers: {
     "Content-Type": "application/json",
   },
