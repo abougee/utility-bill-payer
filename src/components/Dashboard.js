@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { api } from "../services/api";
 import { useAuth } from "../App";
 import {pathnames} from "../App";
@@ -6,6 +7,7 @@ import {pathnames} from "../App";
 function Dashboard() {
   const { user } = useAuth();
   const [stats, setStats] = useState({ total: 0, count: 0, historyCount: 0 });
+ const navigate = useNavigate();
 
   useEffect(() => {
     const fetchStats = async () => {
@@ -50,13 +52,13 @@ function Dashboard() {
       <div style={styles.quickActions}>
         <h3>Quick Actions</h3>
         <button
-          onClick={() => (window.location.href = pathnames.bills)}
+          onClick={() => navigate(pathnames.bills) }
           style={styles.actionButton}
         >
           View & Pay Bills
         </button>
         <button
-          onClick={() => (window.location.href = pathnames.history)}
+          onClick={() => navigate(pathnames.history) }
           style={styles.actionButton}
         >
           Payment History
