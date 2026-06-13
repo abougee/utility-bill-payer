@@ -5,11 +5,11 @@ import {pathnames} from "../App";
 
 function Navbar() {
   const { user, logout } = useAuth();
-  const navigate = useNavigate();
+  const navigateTo = useNavigate();
 
   const handleLogout = () => {
     logout();
-    navigate(pathnames.login);
+    navigateTo(pathnames.login);
   };
 
   return (
