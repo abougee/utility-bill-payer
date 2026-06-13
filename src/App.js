@@ -16,6 +16,14 @@ const AuthContext = createContext(null);
 
 export const useAuth = () => useContext(AuthContext);
 
+export const pathnames = {
+  login: "/login",
+  dashboard: "/dashboard",
+  bills: "/bills",
+  history: "/payment-history",
+  root: "/"
+}
+
 function App() {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -51,24 +59,24 @@ function App() {
           {user && <Navbar />}
           <Routes>
             <Route
-              path="/login"
-              element={!user ? <Login /> : <Navigate to="/dashboard" />}
+              path={pathnames.login}
+              element={!user ? <Login /> : <Navigate to={pathnames.dashboard} />}
             />
             <Route
-              path="/dashboard"
-              element={user ? <Dashboard /> : <Navigate to="/login" />}
+              path={pathnames.dashboard}
+              element={user ? <Dashboard /> : <Navigate to={pathnames.login} />}
             />
             <Route
-              path="/bills"
-              element={user ? <Bills /> : <Navigate to="/login" />}
+              path={pathnames.bills}
+              element={user ? <Bills /> : <Navigate to={pathnames.login} />}
             />
             <Route
-              path="/history"
-              element={user ? <PaymentHistory /> : <Navigate to="/login" />}
+              path={pathnames.history}
+              element={user ? <PaymentHistory /> : <Navigate to={pathnames.login} />}
             />
             <Route
-              path="/"
-              element={<Navigate to={user ? "/dashboard" : "/login"} />}
+              path={pathnames.root}
+              element={<Navigate to={user ? pathnames.dashboard : pathnames.login } />}
             />
           </Routes>
         </div>

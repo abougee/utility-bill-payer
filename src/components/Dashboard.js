@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { api } from "../services/api";
 import { useAuth } from "../App";
+import {pathnames} from "../App";
 
 function Dashboard() {
   const { user } = useAuth();
@@ -49,13 +50,13 @@ function Dashboard() {
       <div style={styles.quickActions}>
         <h3>Quick Actions</h3>
         <button
-          onClick={() => (window.location.href = "/bills")}
+          onClick={() => (window.location.href = pathnames.bills)}
           style={styles.actionButton}
         >
           View & Pay Bills
         </button>
         <button
-          onClick={() => (window.location.href = "/history")}
+          onClick={() => (window.location.href = pathnames.history)}
           style={styles.actionButton}
         >
           Payment History

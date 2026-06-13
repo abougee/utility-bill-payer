@@ -1,4 +1,6 @@
 import axios from "axios";
+import {pathnames} from "../App";
+
 
 const API_BASE_URL = "http://localhost:3000";
 const API_CONTROLLER_URI = "/MyNestJsApp";
@@ -22,9 +24,9 @@ apiClient.interceptors.request.use((config) => {
 
 export const api = {
   login: (username, password) =>
-    apiClient.post("/login", { username, password }),
-  getBills: () => apiClient.get("/bills"),
-  getAllBills: () => apiClient.get("/bills/all"),
-  payBill: (billId) => apiClient.post(`/bills/pay/${billId}`),
-  getPaymentHistory: () => apiClient.get("/payment-history"),
+    apiClient.post(pathnames.login, { username, password }),
+  getBills: () => apiClient.get(pathnames.bills),
+  getAllBills: () => apiClient.get(pathnames.bills + "/all"),
+  payBill: (billId) => apiClient.post(pathnames.bills + `/pay/${billId}`),
+  getPaymentHistory: () => apiClient.get(pathnames.history),
 };

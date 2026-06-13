@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../App";
+import {pathnames} from "../App";
 
 function Navbar() {
   const { user, logout } = useAuth();
@@ -16,13 +17,13 @@ function Navbar() {
       <div style={styles.navContainer}>
         <div style={styles.logo}>BillPay</div>
         <div style={styles.navLinks}>
-          <Link to="/dashboard" style={styles.link}>
+          <Link to={pathnames.dashboard} style={styles.link}>
             Dashboard
           </Link>
-          <Link to="/bills" style={styles.link}>
+          <Link to={pathnames.bills} style={styles.link}>
             Bills
           </Link>
-          <Link to="/history" style={styles.link}>
+          <Link to={pathnames.history} style={styles.link}>
             History
           </Link>
         </div>
