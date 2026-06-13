@@ -51,13 +51,13 @@ function Bills() {
   return (
     <div style={styles.container}>
       <h2>Your Pending Bills</h2>
-      {message && <div style={styles.message}>{message}</div>}
+      {message && <div style={paying ? styles.message_success : styles.message_error}>{message}</div>}
       {bills.length === 0 ? (
         <div style={styles.noBills}>No pending bills. Great job!</div>
       ) : (
         <div style={styles.billsGrid}>
           {bills.map((bill) => (
-            <div key={bill.id} style={styles.billCard}>
+            <div key={bill.Billerid} style={styles.billCard}>
               <div
                 style={{
                   ...styles.billType,
@@ -72,11 +72,11 @@ function Bills() {
                 <p>Due: {new Date(bill.dueDate).toLocaleDateString()}</p>
                 <div style={styles.amount}>${bill.amount.toFixed(2)}</div>
                 <button
-                  onClick={() => handlePayBill(bill.id)}
-                  disabled={paying === bill.id}
+                  onClick={() => handlePayBill(bill.Billerid)}
+                  disabled={paying === bill.Billerid}
                   style={styles.payButton}
                 >
-                  {paying === bill.id ? "Processing..." : "Pay Now"}
+                  {paying === bill.Billerid ? "Processing..." : "Pay Now"}
                 </button>
               </div>
             </div>
@@ -142,10 +142,17 @@ const styles = {
     fontSize: "1.2rem",
     color: "#666",
   },
-  message: {
+  message_success: {
     padding: "1rem",
     backgroundColor: "#d4edda",
     color: "#155724",
+    borderRadius: "4px",
+    marginBottom: "1rem",
+  },
+  message_error: {
+    padding: "1rem",
+    backgroundColor: "#edd4d4",
+    color: "#571515",
     borderRadius: "4px",
     marginBottom: "1rem",
   },
