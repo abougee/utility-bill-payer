@@ -6,6 +6,7 @@ function Bills() {
   const [loading, setLoading] = useState(true);
   const [paying, setPaying] = useState(null);
   const [message, setMessage] = useState("");
+  const [paystatus, setPayStatus] = useState(false);
 
   useEffect(() => {
     fetchBills();
@@ -28,9 +29,11 @@ function Bills() {
       await api.payBill(billId);
       setMessage("Payment successful!");
       fetchBills();
+      setPayStatus(true);
       setTimeout(() => setMessage(""), 3000);
     } catch (error) {
       setMessage("Payment failed. Please try again.");
+      setPayStatus(false);
     } finally {
       setPaying(null);
     }
@@ -51,7 +54,7 @@ function Bills() {
   return (
     <div style={styles.container}>
       <h2>Your Pending Bills</h2>
-      {message && <div style={paying ? styles.message_success : styles.message_error}>{message}</div>}
+      {message && <div style={paystatus ? styles.message_success : styles.message_error}>{message}</div>}
       {bills.length === 0 ? (
         <div style={styles.noBills}>No pending bills. Great job!</div>
       ) : (
